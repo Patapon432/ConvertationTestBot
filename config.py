@@ -1,0 +1,5 @@
+import os
+
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+# BOT_TOKEN = "6455413079:AAFqsuHHQwCt5GsMrmsJ2iZ4Gb7U-T9FlO8"
