@@ -19,12 +19,12 @@ dp = Dispatcher()
 
 @dp.message(CommandStart())
 async def handle_start(message: types.Message):
-    await message.answer(text=f"Hello, {message.from_user.full_name}")
+    await message.answer(text=f"Hello, {message.from_user.full_name}.")
 
 
 @dp.message(Command("help"))
 async def hamdle_help(message: types.Message):
-    text = "I,m and echo bot.\nSend me any message!"
+    text = "I,m and convert bot.\nSend me any archive!"
     await message.answer(text=text)
 
 
@@ -52,15 +52,13 @@ async def download_document(message: types.Message):
     patoolib.extract_archive(f"{archive_received_from_the_user}", outdir=f"Cookies//")
 
     time.sleep(5)
-    file_name_without_extension = archive_received_from_the_user.split(".")[0]
+    file_name_without_extension = archive_received_from_the_user.split('.')[0] + "//"
 
     # Get the list of all files and directories
     pathc = "Cookies//"
 
     dir_list = os.listdir(pathc + file_name_without_extension)
-
-
-
+    print(dir_list)
     # Конвертация файла в нужный формат
     await message.answer("Convertation...")
     print("TASK STARTED...")
@@ -96,10 +94,6 @@ async def download_document(message: types.Message):
             shutil.rmtree("cookies_json//")
         if os.path.exists("Cookies_json.zip"):
             os.remove("Cookies_json.zip")
-
-
-
-
 
 
 async def main():
