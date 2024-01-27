@@ -1,3 +1,5 @@
+
+
 import asyncio
 import logging
 import os
@@ -7,10 +9,10 @@ from aiogram import Dispatcher
 from aiogram import types
 from aiogram.filters import CommandStart, Command
 import config
-import check
+import convertation_netscape_to_json
 import patoolib
 import time
-import test_archivation
+import archivation
 
 
 bot = Bot(token=config.BOT_TOKEN)
@@ -65,12 +67,12 @@ async def download_document(message: types.Message):
 
     for h in dir_list:
         print("new file", h)
-        check.netscape_to_json(h, path, file_name_without_extension)
+        convertation_netscape_to_json.netscape_to_json(h, path, file_name_without_extension)
 
     print("TASK COMPLETED...")
 
     # Архивация папки в нужном формате
-    test_archivation.archivation()
+    archivation.archivation()
 
     # Отправление архива пользователю
     try:
